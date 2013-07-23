@@ -40,32 +40,63 @@ lxc.tty = 1
 
 lxc.cgroup.devices.allow = c *:* rwm
 
-# # /dev/null and zero
-# lxc.cgroup.devices.allow = c 1:3 rwm
-# lxc.cgroup.devices.allow = c 1:5 rwm
-# 
-# # consoles
-# lxc.cgroup.devices.allow = c 5:1 rwm
-# lxc.cgroup.devices.allow = c 5:0 rwm
-# lxc.cgroup.devices.allow = c 4:0 rwm
-# lxc.cgroup.devices.allow = c 4:1 rwm
-# 
-# # /dev/urandom,/dev/random
-# lxc.cgroup.devices.allow = c 1:9 rwm
-# lxc.cgroup.devices.allow = c 1:8 rwm
-# 
-# # /dev/pts/* - pts namespaces are "coming soon"
-# lxc.cgroup.devices.allow = c 136:* rwm
-# lxc.cgroup.devices.allow = c 5:2 rwm
-# 
-# # tuntap
-# lxc.cgroup.devices.allow = c 10:200 rwm
-# 
-# # fuse
-# #lxc.cgroup.devices.allow = c 10:229 rwm
-# 
-# # rtc
-# #lxc.cgroup.devices.allow = c 254:0 rwm
+# /dev/null and zero
+lxc.cgroup.devices.allow = c 1:3 rwm
+lxc.cgroup.devices.allow = c 1:5 rwm
+
+# consoles
+lxc.cgroup.devices.allow = c 5:1 rwm
+lxc.cgroup.devices.allow = c 5:0 rwm
+lxc.cgroup.devices.allow = c 4:0 rwm
+lxc.cgroup.devices.allow = c 4:1 rwm
+
+# /dev/urandom,/dev/random
+lxc.cgroup.devices.allow = c 1:9 rwm
+lxc.cgroup.devices.allow = c 1:8 rwm
+
+# /dev/pts/* - pts namespaces are "coming soon"
+lxc.cgroup.devices.allow = c 136:* rwm
+lxc.cgroup.devices.allow = c 5:2 rwm
+
+# tuntap
+lxc.cgroup.devices.allow = c 10:200 rwm
+
+# fuse
+#lxc.cgroup.devices.allow = c 10:229 rwm
+
+# rtc
+#lxc.cgroup.devices.allow = c 254:0 rwm
+
+# serial ports
+lxc.cgroup.devices.allow = c 4:2 rwm
+lxc.cgroup.devices.allow = c 4:3 rwm
+lxc.cgroup.devices.allow = c 4:4 rwm
+lxc.cgroup.devices.allow = c 4:5 rwm
+lxc.cgroup.devices.allow = c 4:6 rwm
+lxc.cgroup.devices.allow = c 4:7 rwm
+lxc.cgroup.devices.allow = c 4:8 rwm
+lxc.cgroup.devices.allow = c 4:9 rwm
+lxc.cgroup.devices.allow = c 4:10 rwm
+
+# /dev/ttyUSB0
+lxc.cgroup.devices.allow = c 188:0 rwm
+
+# usb ports
+lxc.cgroup.devices.allow = c 189:0 rwm
+lxc.cgroup.devices.allow = c 189:128 rwm
+lxc.cgroup.devices.allow = c 189:129 rwm
+lxc.cgroup.devices.allow = c 189:130 rwm
+lxc.cgroup.devices.allow = c 189:131 rwm
+lxc.cgroup.devices.allow = c 189:132 rwm
+lxc.cgroup.devices.allow = c 189:133 rwm
+lxc.cgroup.devices.allow = c 189:135 rwm
+lxc.cgroup.devices.allow = c 189:256 rwm
+lxc.cgroup.devices.allow = c 189:257 rwm
+lxc.cgroup.devices.allow = c 189:384 rwm
+lxc.cgroup.devices.allow = c 189:512 rwm
+lxc.cgroup.devices.allow = c 189:640 rwm
+lxc.cgroup.devices.allow = c 189:768 rwm
+lxc.cgroup.devices.allow = c 189:896 rwm
 
 # standard mount point
 #  WARNING: procfs is a known attack vector and should probably be disabled
@@ -95,7 +126,7 @@ lxc.mount.entry = {{$realPath}} {{$ROOTFS}}/{{$virtualPath}} none bind,{{ if ind
 #  (Note: 'lxc.cap.keep' is coming soon and should replace this under the
 #         security principle 'deny all unless explicitly permitted', see
 #         http://sourceforge.net/mailarchive/message.php?msg_id=31054627 )
-lxc.cap.drop = audit_control audit_write mac_admin mac_override mknod setfcap setpcap sys_admin sys_boot sys_module sys_nice sys_pacct sys_rawio sys_resource sys_time sys_tty_config
+lxc.cap.drop = audit_control audit_write mac_admin mac_override setfcap setpcap sys_admin sys_boot sys_module sys_nice sys_pacct sys_rawio sys_resource sys_time sys_tty_config
 
 # limits
 {{if .Config.Memory}}
