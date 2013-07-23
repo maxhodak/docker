@@ -36,7 +36,7 @@ lxc.console = none
 lxc.tty = 1
 
 # no implicit access to devices
-lxc.cgroup.devices.deny = a
+# lxc.cgroup.devices.deny = a
 
 # /dev/null and zero
 lxc.cgroup.devices.allow = c 1:3 rwm
